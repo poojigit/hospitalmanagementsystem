@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Hospital Management System</title>
+  <style>
+    body {
+        background: linear-gradient(to right, #8EC5FC, #E0C3FC);
+        font-family: 'Segoe UI', sans-serif;
+        text-align: center;
+        padding-top: 100px;
+    }
+
+    h1 {
+        color: #4A148C;
+        font-size: 3em;
+    }
+
+    a {
+        display: inline-block;
+        padding: 15px 30px;
+        margin: 20px;
+        background-color: #6A1B9A;
+        color: white;
+        text-decoration: none;
+        border-radius: 10px;
+        font-weight: bold;
+        transition: 0.3s ease;
+    }
+
+    a:hover {
+        background-color: #4A148C;
+    }
+  </style>
+</head>
+<body>
+<h1>🏥 Welcome to Hospital Management System</h1>
+<a th:href="@{/login}">Login</a>
+<a th:href="@{/register}">Register</a>
+</body>
+</html>

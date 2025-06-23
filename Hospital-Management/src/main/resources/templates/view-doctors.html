@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Registered Doctors</title>
+  <style>
+    body {
+        background: linear-gradient(to right, #c2e59c, #64b3f4);
+        font-family: 'Segoe UI', sans-serif;
+        padding: 50px;
+        margin: 0;
+    }
+
+    .container {
+        background-color: #fff;
+        border-radius: 15px;
+        padding: 30px;
+        width: 90%;
+        max-width: 1000px;
+        margin: auto;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+        text-align: center;
+        color: #388e3c;
+        margin-bottom: 20px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background: #fefefe;
+    }
+
+    th, td {
+        padding: 12px 16px;
+        border: 1px solid #ddd;
+        text-align: center;
+    }
+
+    th {
+        background-color: #4caf50;
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f1fff0;
+    }
+
+    a {
+        text-decoration: none;
+        display: inline-block;
+        margin-top: 20px;
+        font-weight: bold;
+        color: #2e7d32;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h2>🩺 Registered Doctors</h2>
+  <table>
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Specialization</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="doc : ${doctors}">
+      <td th:text="${doc.user.name}">Doctor Name</td>
+      <td th:text="${doc.user.email}">Doctor Email</td>
+      <td th:text="${doc.specialization}">Specialization</td>
+    </tr>
+    </tbody>
+  </table>
+  <a th:href="@{/admin/dashboard}">← Back to Dashboard</a>
+</div>
+</body>
+</html>

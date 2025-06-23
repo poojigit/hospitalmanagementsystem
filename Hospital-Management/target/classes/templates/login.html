@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Login | Hospital Management System</title>
+  <style>
+    body {
+        background: linear-gradient(to right, #4facfe, #00f2fe);
+        font-family: 'Segoe UI', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    .login-box {
+        background-color: #ffffff;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        width: 100%;
+        max-width: 400px;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #333;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+        width: 100%;
+        padding: 12px;
+        margin: 8px 0 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 16px;
+    }
+
+    button {
+        width: 100%;
+        background-color: #4facfe;
+        border: none;
+        color: white;
+        padding: 12px;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background-color: #00c6ff;
+    }
+
+    .create-account {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .create-account a {
+        color: #4facfe;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .create-account a:hover {
+        text-decoration: underline;
+    }
+
+    /* Toast */
+    #toast {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: #ff4d4d;
+        color: white;
+        padding: 12px 20px;
+        border-radius: 6px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        display: none;
+        z-index: 9999;
+    }
+  </style>
+</head>
+<body>
+
+<div class="login-box">
+  <h2>🔐 Login</h2>
+  <form th:action="@{/login}" method="post">
+    <input type="email" name="email" placeholder="Enter Email" required />
+    <input type="password" name="password" placeholder="Enter Password" required />
+    <button type="submit">Login</button>
+  </form>
+  <div class="create-account">
+    <p>Don't have an account? <a th:href="@{/register}">Create New Account</a></p>
+  </div>
+</div>
+
+<!-- Toast for error message -->
+<div id="toast" th:if="${error}" th:text="${error}">
+  Error Message
+</div>
+
+<script>
+  // Show toast if error is present
+  window.onload = function () {
+      let toast = document.getElementById("toast");
+      if (toast && toast.innerText.trim() !== "") {
+          toast.style.display = "block";
+          setTimeout(() => toast.style.display = "none", 3000); // Hide after 3 seconds
+      }
+  };
+</script>
+
+</body>
+</html>

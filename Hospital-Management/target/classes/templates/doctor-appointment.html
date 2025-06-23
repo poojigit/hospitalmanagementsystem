@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>My Appointments - Doctor</title>
+  <style>
+    body {
+        background: linear-gradient(to right, #a1ffce, #faffd1);
+        font-family: 'Segoe UI', sans-serif;
+        padding: 50px;
+    }
+    .container {
+        background-color: #fff;
+        border-radius: 15px;
+        padding: 30px;
+        width: 90%;
+        max-width: 1000px;
+        margin: auto;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+    h2 {
+        text-align: center;
+        color: #00796B;
+        margin-bottom: 20px;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background: #fefefe;
+    }
+    th, td {
+        padding: 12px 16px;
+        border: 1px solid #ddd;
+        text-align: center;
+    }
+    th {
+        background-color: #009688;
+        color: white;
+    }
+    tr:nth-child(even) {
+        background-color: #f1fefc;
+    }
+    a {
+        text-decoration: none;
+        display: inline-block;
+        margin-top: 20px;
+        font-weight: bold;
+        color: #00796B;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h2>🩺 My Appointments</h2>
+  <table>
+    <thead>
+    <tr>
+      <th>Patient</th>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Details</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="a : ${appointments}">
+      <td th:text="${a.patient.name}"></td>
+      <td th:text="${a.date}"></td>
+      <td th:text="${a.time}"></td>
+      <td th:text="${a.details}"></td>
+    </tr>
+    </tbody>
+  </table>
+  <a th:href="@{/doctor/dashboard}">← Back to Dashboard</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Doctor Dashboard</title>
+  <style>
+    body {
+        background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+        font-family: 'Segoe UI', sans-serif;
+        text-align: center;
+        padding-top: 100px;
+    }
+
+    h2 {
+        color: #0d47a1;
+    }
+
+    a {
+        display: block;
+        margin: 20px auto;
+        padding: 15px 25px;
+        width: 300px;
+        background-color: #1565c0;
+        color: white;
+        font-weight: bold;
+        border-radius: 10px;
+        text-decoration: none;
+    }
+
+    a:hover {
+        background-color: #0d47a1;
+    }
+  </style>
+</head>
+<body>
+<h2>👨‍⚕️ Doctor Dashboard</h2>
+<a th:href="@{/doctor/schedule}">View My Appointments</a>
+<a th:href="@{/logout}">Logout</a>
+</body>
+</html>

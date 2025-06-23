@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Patient Dashboard</title>
+  <style>
+    body {
+        background: linear-gradient(to right, #fbc2eb, #a6c1ee);
+        font-family: 'Segoe UI', sans-serif;
+        text-align: center;
+        padding-top: 100px;
+    }
+
+    h2 {
+        color: #6a1b9a;
+    }
+
+    a {
+        display: block;
+        margin: 20px auto;
+        padding: 15px 25px;
+        width: 300px;
+        background-color: #8e24aa;
+        color: white;
+        font-weight: bold;
+        border-radius: 10px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+    a:hover {
+        background-color: #6a1b9a;
+    }
+
+    .toast {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 15px 25px;
+        border-radius: 8px;
+        font-weight: bold;
+        display: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    #toast-success {
+        background-color: #4caf50;
+        color: white;
+    }
+
+    #toast-error {
+        background-color: #e74c3c;
+        color: white;
+    }
+  </style>
+</head>
+<body>
+
+<h2>🏥 Patient Dashboard</h2>
+
+<a th:href="@{/patient/book}">Book Appointment</a>
+<a th:href="@{/patient/appointments}">📋 View My Appointments</a>
+<a th:href="@{/logout}">Logout</a>
+
+<!-- ✅ Toasts -->
+<div id="toast-success" th:if="${success}" th:text="${success}" class="toast"></div>
+<div id="toast-error" th:if="${error}" th:text="${error}" class="toast"></div>
+
+<script>
+  window.onload = function () {
+      const successToast = document.getElementById("toast-success");
+      const errorToast = document.getElementById("toast-error");
+
+      if (successToast && successToast.innerText.trim() !== "") {
+          successToast.style.display = "block";
+          setTimeout(() => successToast.style.display = "none", 3000);
+      }
+
+      if (errorToast && errorToast.innerText.trim() !== "") {
+          errorToast.style.display = "block";
+          setTimeout(() => errorToast.style.display = "none", 3000);
+      }
+  };
+</script>
+
+</body>
+</html>
